@@ -273,6 +273,7 @@ class SearchFilter(Filter):
     def __init__(self, filters):
         super(SearchFilter, self).__init__(filters)
         self.search = None
+        delegates = User.objects.filter( profile__maintainer_projects__isnull=False).distinct()
 
     @property
     def condition(self):
